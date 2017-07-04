@@ -14,9 +14,10 @@ public class DataSource {
 
 	public DataSource() {
 		this.dbUrl = "jdbc:sqlite:dirtybank.db";
-		this.login = "";
+		this.login = "sa";
 		this.password = "";
 		this.driver = "org.sqlite.JDBC";
+
 		openDataSource();
 	}
 
@@ -30,12 +31,14 @@ public class DataSource {
 
 	private void openDataSource() {
 		try {
-			Class.forName(this.driver);
+			//Class.forName(this.driver);
+			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection(this.dbUrl, this.login, this.password);
 		} catch (SQLException sqle) {
-			System.err.println("Connection error: " + sqle.getMessage());
+			System.err.println("Connection error (sql): " + sqle.getMessage());
 		} catch (Exception e) {
 			System.err.println("Connection error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

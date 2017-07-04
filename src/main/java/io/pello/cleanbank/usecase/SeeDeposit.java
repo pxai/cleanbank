@@ -1,9 +1,11 @@
 package io.pello.cleanbank.usecase;
 
 import javax.inject.Inject;
+
+import io.pello.cleanbank.boundaries.SeeDepositBoundary;
 import io.pello.cleanbank.entity.gateway.AccountEntityGateway;
 
-public class SeeDeposit {
+public class SeeDeposit implements SeeDepositBoundary {
 	private AccountEntityGateway accountEntityGateway;
 	
 	public double seeDeposit (String accountId) {
