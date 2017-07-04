@@ -21,9 +21,12 @@ public class Account {
 		return balance;
 	}
 
-	public void setBalance(Float balance) {
-		this.balance = balance;
+	public void deposit (Float money) {
+		balance = balance + money;
 	}
 	
+	public void withdraw (Float money) {
+		balance = balance - money;
+	}
 	
 }
