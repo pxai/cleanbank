@@ -26,13 +26,11 @@ public class DataSource {
 		this.login = login;
 		this.password = password;
 		this.driver = driver;
-		openDataSource();
 	}
 
 	private void openDataSource() {
 		try {
-			//Class.forName(this.driver);
-			Class.forName("org.sqlite.JDBC");
+			Class.forName(this.driver);
 			connection = DriverManager.getConnection(this.dbUrl, this.login, this.password);
 		} catch (SQLException sqle) {
 			System.err.println("Connection error (sql): " + sqle.getMessage());
@@ -44,6 +42,9 @@ public class DataSource {
 
 
 	public Connection getConnection() {
+		if (null == connection) {
+			openDataSource();
+		}
 		return connection;
 	}
 
@@ -51,6 +52,7 @@ public class DataSource {
 	public void close() {
 		try {
 			connection.close();
+			connection = null;
 		} catch (SQLException sqle) {
 			System.err.println("Connection error: " + sqle.getMessage());
 		} catch (Exception e) {

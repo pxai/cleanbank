@@ -2,10 +2,11 @@ package io.pello.cleanbank.usecase;
 
 import javax.inject.Inject;
 
+import io.pello.cleanbank.boundaries.DepositMoneyBoundary;
 import io.pello.cleanbank.entity.Account;
 import io.pello.cleanbank.entity.gateway.AccountEntityGateway;
 
-public class DepositMoney {
+public class DepositMoney implements DepositMoneyBoundary {
 	private AccountEntityGateway accountEntityGateway;
 	
 	public Float deposit (Account account, Float money) {
