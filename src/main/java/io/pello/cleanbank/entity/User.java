@@ -12,6 +12,8 @@ public class User {
 		this.name = name;
 		this.account = account;
 	}
+	
+	// getters/setters ...
 
 	public String getLogin() {
 		return login;
@@ -44,6 +46,5 @@ public class User {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	
 	
 }
